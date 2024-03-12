@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/headerFooter.css">
+  <link rel="stylesheet" href="../css/add_course.css">
+  <title>Add Course</title>
+</head>
+<body>
+<div th:replace="fragments/admin_header :: header">
+</div>
+
+<div style="margin-top: 20px; margin-bottom: 20px;" class="container adding">
+  <h1 style="text-align: center">
+    Добавление нового курса
+  </h1>
+  <form th:action="@{/admin/add_course}" method="post">
+    <div class="form-group">
+      <label for="courseName">Название курса</label>
+      <input type="text" id="courseName" name="courseName" required>
+    </div>
+    <div class="form-group">
+      <label for="groupCode">Код группы</label>
+      <textarea id="groupCode" name="groupCode" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="usernames">Список пользователей</label>
+      <textarea id="usernames" name="usernames" rows="6" placeholder="Имена пользователей через запятую" required></textarea>
+    </div>
+    <button type="submit" class="submit-button">Добавить курс</button>
+  </form>
+</div>
+
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+</html>

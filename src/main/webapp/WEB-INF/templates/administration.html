@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Details</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/headerFooter.css">
+  <link rel="stylesheet" href="../css/administration.css">
+</head>
+<body>
+<div th:replace="fragments/admin_header :: header">
+</div>
+
+<div class="users-container add-user-buttons">
+  <a href="/admin/administration/add_student" class="add-student-link">Добавить студента</a>
+  <a href="/admin/administration/add_educator" class="add-educator-link">Добавить преподавателя</a>
+</div>
+
+<div class="users-container">
+  <h1>Пользователи</h1>
+  <table class="users-table users-table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Имя пользователя</th>
+      <th>Имя</th>
+      <th>Номер телефона</th>
+      <th>Статус</th>
+      <th>Роли</th>
+      <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.firstName}"></td>
+      <td th:text="${user.phoneNumber}"></td>
+      <td th:text="${user.active} ? 'Активен' : 'Заблокирован'"></td>
+      <td>
+        <ul>
+          <li th:each="role : ${user.userRoles}" th:text="${role.roleName}"></li>
+        </ul>
+      </td>
+      <td>
+        <form th:action="@{/admin/administration/block_user}" method="post">
+          <input type="hidden" name="id" th:value="${user.id}" />
+          <button type="submit" class="users-btn btn-primary">
+            Заблокировать
+          </button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+</html>

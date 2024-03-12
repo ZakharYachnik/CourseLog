@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Details</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/headerFooter.css">
+    <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+<div th:replace="fragments/admin_header :: header">
+</div>
+
+<div class="courses-container">
+    <h1 >Курсы</h1>
+    <table class="courses-table courses-table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя Курса</th>
+            <th>Код Группы</th>
+            <th>Статус</th>
+            <th>Ссылка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.groupCode}"></td>
+            <td th:text="${course.status}"></td>
+            <td>
+                <a th:href="@{/admin/courses/{id}(id=${course.id})}" class="courses-btn btn-primary">
+                    Перейти
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+</html>

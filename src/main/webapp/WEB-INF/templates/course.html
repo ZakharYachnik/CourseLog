@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/headerFooter.css">
+    <link rel="stylesheet" href="../../css/add_course.css">
+    <title>Course</title>
+</head>
+<body>
+<div th:replace="fragments/admin_header :: header">
+</div>
+
+<div style="margin-top: 20px; margin-bottom: 20px;" class="container adding">
+    <h1 style="text-align: center">
+        Редактирование Курса
+    </h1>
+    <form th:action="@{/admin/courses/change_course}" method="post">
+        <div class="form-group">
+            <label for="courseName">Название курса</label>
+            <input type="text" id="courseName" name="courseName" th:text    th:value="${course.courseName}" required>
+        </div>
+        <div class="form-group">
+            <label for="groupCode">Код группы</label>
+            <input id="groupCode" name="groupCode" rows="3" th:value="${course.groupCode}" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="usernames">Список студентов</label>
+            <textarea id="usernames" name="usernames" rows="6" th:text="${usernames}" required>
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label for="educator">Преподаватель</label>
+            <input type="text" id="educator" name="educator" th:value="${educator}" required>
+        </div>
+        <button type="submit" class="submit-button">Редактировать</button>
+    </form>
+
+    <form th:action="@{/admin/courses/complete_course}" method="post">
+        <input type="hidden" id="id" name="id" th:value="${course.id}">
+        <button type="submit" class="submit-button" style="margin-top: 10px; background-color: red;">Завершить курс</button>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+</html>

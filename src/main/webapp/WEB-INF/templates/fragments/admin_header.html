@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<header th:fragment="header">
+  <nav class="header_nav">
+    <ul class="header_ul">
+      <li class="header_li"><a th:href="@{/admin/main_page}" class="logo">TechnoAcademy</a></li>
+      <li class="header_li"><a th:href="@{/admin/courses}" class="active">Курсы</a></li>
+      <li class="header_li"><a th:href="@{/admin/add_course}" class="active">Добавить курсы</a></li>
+      <li class="header_li"><a th:href="@{/admin/administration}" class="btn ad">
+        Администрирование </a></li>
+      <li class="header_li"><a th:href="@{/logout}" class="btn profile">Выйти</a></li>
+    </ul>
+  </nav>
+</header>
+</body>
+</html>
