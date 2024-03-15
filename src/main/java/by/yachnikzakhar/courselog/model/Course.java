@@ -29,11 +29,25 @@ public class Course {
     @Column(name = "status")
     private String status;
 
-    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<User> users = new ArrayList<>();
 
     public Course(String courseName, String groupCode) {
         this.courseName = courseName;
         this.groupCode = groupCode;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        user.getCourses().add(this);
+    }
+
+    public User getEducator(){
+        for (User user : users) {
+            if (user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("EDUCATOR"))) {
+                return user;
+            }
+        }
+        return null;
     }
 }

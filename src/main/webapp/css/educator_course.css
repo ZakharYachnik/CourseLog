@@ -41,3 +41,41 @@
     background-color: #45a049;
 }
 
+.buttons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buttons a {
+    display: inline-block;
+    border-radius: 4px;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    background-color: #45a049;
+}
+
+.buttons a:focus {
+    outline: none;
+}
+
+.lessons-link{
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-left: 200px;
+}
+
+.attendance-link{
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-left: 250px;
+}

@@ -44,10 +44,9 @@
         </ul>
       </td>
       <td>
-        <form th:action="@{/admin/administration/block_user}" method="post">
+        <form th:action="${user.active} ? '/admin/administration/block_user' : '/admin/administration/unblock_user'" method="post">
           <input type="hidden" name="id" th:value="${user.id}" />
-          <button type="submit" class="users-btn btn-primary">
-            Заблокировать
+          <button type="submit" class="users-btn btn-primary" th:text="${user.active} ? 'Заблокировать' : 'Разблокировать'">
           </button>
         </form>
       </td>

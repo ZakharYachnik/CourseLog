@@ -20,5 +20,7 @@ public interface UserDao {
 
     List<User> findAll();
 
-    void saveUserRoles(List<UserRole> roles, User user);
+    void unblockById(Long id) throws DaoException;
+
+
 }

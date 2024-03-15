@@ -17,6 +17,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode()
 public class User implements UserDetails {
 
     @Id
@@ -42,7 +43,7 @@ public class User implements UserDetails {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_has_roles",
             joinColumns = { @JoinColumn(name = "user_id") },
@@ -50,7 +51,7 @@ public class User implements UserDetails {
     )
     private List<UserRole> userRoles = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_has_courses",
             joinColumns = { @JoinColumn(name = "user_id") },
@@ -58,7 +59,7 @@ public class User implements UserDetails {
     )
     private List<Course> courses = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "attendance",
             joinColumns = { @JoinColumn(name = "users_id") },
@@ -106,5 +107,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isActive();
+    }
+
+
+    public void addUserRole(UserRole userRole) {
+        userRoles.add(userRole);
+    }
+
+    public void removeUserRole(UserRole userRole) {
+        userRoles.remove(userRole);
     }
 }

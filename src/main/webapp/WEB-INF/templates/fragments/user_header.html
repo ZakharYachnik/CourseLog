@@ -10,10 +10,9 @@
 <header th:fragment="header">
   <nav class="header_nav" >
     <ul class="header_ul">
-      <li class="header_li"><a th:href="@{/main}" class="logo">TechnoAcademy</a></li>
-      <li class="header_li"><a th:href="@{/main}" class="active">Мои курсы</a></li>
-      <li class="header_li"><a href="/profile" class="btn profile">Профиль</a></li>
-      <li class="header_li">
+      <li class="header_li"><a th:href="@{/student/main_page}" class="logo">TechnoAcademy</a></li>
+      <li class="header_li"><a th:href="@{/student/courses}" class="active">Мои курсы</a></li>
+      <li class="header_li" style="margin-left: 1000px;">
         <form th:action="@{/logout}" method="post" class="sing_out">
           <input type="submit" value="Выйти" class="btn profile"/>
         </form>

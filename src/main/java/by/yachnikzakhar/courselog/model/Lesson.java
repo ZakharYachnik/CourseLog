@@ -1,11 +1,17 @@
 package by.yachnikzakhar.courselog.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "lessons")
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +26,5 @@ public class Lesson {
 
     @Column(name = "lesson_date")
     private LocalDate lessonDate;
-
-
 
 }

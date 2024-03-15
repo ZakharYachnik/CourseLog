@@ -1,0 +1,52 @@
+.container-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.course-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-gap: 20px;
+}
+
+.course-item {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.course-link:hover {
+    text-decoration: none;
+}
+
+.course-title {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-code {
+    color: #777;
+}
+
+.course-teacher {
+    font-style: italic;
+    color: #777;
+}

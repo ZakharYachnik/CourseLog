@@ -1,6 +1,7 @@
 package by.yachnikzakhar.courselog.dao;
 
 import by.yachnikzakhar.courselog.model.Course;
+import by.yachnikzakhar.courselog.model.User;
 
 import java.util.List;
 

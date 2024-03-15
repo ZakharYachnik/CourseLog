@@ -29,17 +29,13 @@ public class CourseService {
         course.setStatus("ACTIVE");
 
         List<User> users = getUsersByUsernames(usernames);
+        users.forEach(course::addUser);
 
         try {
             courseDao.add(course);
         } catch (DaoException e) {
             throw new ServiceException(e.getMessage());
         }
-
-        for(User user : users){
-            user.getCourses().add(course);
-        }
-
         return course;
     }
 
@@ -144,4 +140,6 @@ public class CourseService {
             throw new ServiceException(e.getMessage());
         }
     }
+
+
 }

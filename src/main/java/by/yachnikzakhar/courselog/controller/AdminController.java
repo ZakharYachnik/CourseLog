@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@PreAuthorize("hasAuthority('ADMIN')")
+@PreAuthorize("hasRole('ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -54,7 +54,7 @@ public class AdminController {
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }
-        return "courses";
+        return "admin_courses";
     }
 
     @GetMapping("courses/{id}")
@@ -70,7 +70,7 @@ public class AdminController {
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }
-        return "course";
+        return "admin_course";
     }
 
     @PostMapping("courses/change_course")
@@ -135,4 +135,35 @@ public class AdminController {
             return "redirect:/admin/administration?error=" + e.getMessage();
         }
     }
+
+    @GetMapping("/administration/add_educator")
+    public String showAddEducator(){
+        return "add_educator";
+    }
+
+    @PostMapping("/administration/add_educator")
+    public String addEducator(
+            @ModelAttribute("user") User user
+    ){
+        try {
+            adminService.addEducator(user);
+            return "redirect:/admin/administration";
+        } catch (ServiceException e) {
+            return "redirect:/admin/administration?error=" + e.getMessage();
+        }
+    }
+
+    @PostMapping("/administration/unblock_user")
+    public String unblockUser(
+            @RequestParam("id") Long id
+    )
+    {
+        try {
+            adminService.unblockById(id);
+            return "redirect:/admin/administration";
+        }catch (ServiceException e){
+            return "redirect:/admin/administration?error=" + e.getMessage();
+        }
+    }
+
 }

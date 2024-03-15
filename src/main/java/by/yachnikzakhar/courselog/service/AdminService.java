@@ -20,11 +20,13 @@ public class AdminService {
     @Autowired
     private UserRoleDao userRoleDao;
 
+    @Transactional
     public List<User> getAllUsers() {
         return userDao.findAll();
     }
 
 
+    @Transactional
     public void blockById(Long id) throws ServiceException {
         try {
             userDao.blockById(id);
@@ -39,12 +41,41 @@ public class AdminService {
         user.setActive(true);
 
         try {
-            List<UserRole> roles = List.of(userRoleDao.findByRoleName("STUDENT"));
-
+            user.addUserRole(userRoleDao.findByRoleName("STUDENT"));
             userDao.add(user);
-            userDao.saveUserRoles(roles, user);
-
             return user;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+
+    @Transactional
+    public User addEducator(User user) throws ServiceException {
+        user.setActive(true);
+
+        try {
+            user.addUserRole(userRoleDao.findByRoleName("EDUCATOR"));
+            userDao.add(user);
+            return user;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Transactional
+    public void blockUserById(Long id) throws ServiceException {
+        try {
+            userDao.blockById(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Transactional
+    public void unblockById(Long id) throws ServiceException {
+        try {
+            userDao.unblockById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

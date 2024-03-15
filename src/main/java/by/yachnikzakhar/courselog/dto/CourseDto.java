@@ -1,7 +1,10 @@
 package by.yachnikzakhar.courselog.dto;
 
 import by.yachnikzakhar.courselog.model.User;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToMany;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,10 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode()
-public class UserRoleDto {
+public class CourseDto {
 
     private Integer id;
 
-    private String roleName;
+    private String courseName;
 
+    private String groupCode;
+
+    private User educator;
 }
