@@ -4,11 +4,13 @@ import by.yachnikzakhar.courselog.dao.CourseDao;
 import by.yachnikzakhar.courselog.dao.DaoException;
 import by.yachnikzakhar.courselog.model.Course;
 import by.yachnikzakhar.courselog.model.User;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -97,6 +99,5 @@ public class CourseDaoImpl implements CourseDao {
 
         return query.list();
     }
-
 
 }

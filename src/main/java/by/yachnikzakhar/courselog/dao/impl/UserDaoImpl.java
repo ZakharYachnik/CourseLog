@@ -31,8 +31,6 @@ public class UserDaoImpl implements UserDao {
     private static final String GET_ALL_USERS = "FROM User";
 
 
-
-
     @Override
     public void add(User user) throws DaoException{
         Session currentSession = sessionFactory.getCurrentSession();
@@ -75,7 +73,6 @@ public class UserDaoImpl implements UserDao {
         query.setParameter("email", email);
 
         return query.uniqueResult();
-        //TODO: add exception
     }
 
     @Override
@@ -86,7 +83,6 @@ public class UserDaoImpl implements UserDao {
         query.setParameter("id", id);
 
         return query.uniqueResult();
-        //TODO: add exception
     }
 
     @Override

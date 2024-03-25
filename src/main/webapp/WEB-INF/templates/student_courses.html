@@ -12,7 +12,7 @@
   <title>Student Courses</title>
 </head>
 <body>
-<div th:replace="fragments/educator_header :: header">
+<div th:replace="fragments/user_header :: header">
 </div>
 
 <div th:if="${courses.size() == 0}" class="msg">
@@ -22,7 +22,7 @@
 <div class="container container-list">
   <ul class="course-list">
     <li th:each="courseDto : ${courses}">
-      <a th:href="@{/user/courses/{id}(id=${courseDto.getId()})}" class="no-style-link">
+      <a th:href="@{/student/courses/{id}/lessons(id=${courseDto.getId()})}" class="no-style-link">
         <div class="course-item">
           <div class="course-details">
             <div class="course-title">

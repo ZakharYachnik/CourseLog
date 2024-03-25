@@ -33,10 +33,11 @@ public class CourseService {
 
         try {
             courseDao.add(course);
+
+            return course;
         } catch (DaoException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
-        return course;
     }
 
     private List<User> getUsersByUsernames(String usernames) throws ServiceException {
@@ -58,7 +59,7 @@ public class CourseService {
         try {
             return courseDao.findByCourseName(name);
         } catch (DaoException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
 
@@ -77,7 +78,7 @@ public class CourseService {
         try {
             return courseDao.findById(id);
         } catch (DaoException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
 
@@ -125,11 +126,11 @@ public class CourseService {
             course.setUsers(users);
 
             courseDao.update(course);
-        } catch (DaoException e) {
-            throw new ServiceException(e.getMessage());
-        }
 
-        return course;
+            return course;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Transactional
@@ -137,9 +138,8 @@ public class CourseService {
         try {
             courseDao.completeById(id);
         } catch (DaoException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
-
 
 }

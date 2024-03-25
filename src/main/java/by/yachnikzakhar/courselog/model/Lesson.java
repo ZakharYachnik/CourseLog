@@ -27,4 +27,7 @@ public class Lesson {
     @Column(name = "lesson_date")
     private LocalDate lessonDate;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "courses_id")
+    private Course course;
 }

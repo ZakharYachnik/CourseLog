@@ -32,6 +32,9 @@ public class Course {
     @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<User> users = new ArrayList<>();
 
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Lesson> lessons = new ArrayList<>();
+
     public Course(String courseName, String groupCode) {
         this.courseName = courseName;
         this.groupCode = groupCode;

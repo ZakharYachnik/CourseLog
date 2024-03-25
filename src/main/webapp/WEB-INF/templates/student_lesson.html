@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/headerFooter.css">
+    <link rel="stylesheet" href="../../../../css/add_lesson.css">
+    <title>Lesson</title>
+</head>
+<body>
+<div th:replace="fragments/user_header :: header">
+</div>
+
+<div style="margin-top: 20px; margin-bottom: 20px;" class="container adding">
+    <h1 style="text-align: center">
+        Просмотр занятия
+    </h1>
+    <div class="form-group">
+        <label for="lessonName">Тема занятия</label>
+        <input type="text" id="lessonName" name="lessonName" th:value="${lesson.lessonName}"
+               placeholder="№1 - Java Core" readonly>
+    </div>
+    <div class="form-group">
+        <label for="lessonDate">Дата занятия</label>
+        <input type="date" id="lessonDate" name="lessonDate" th:value="${lesson.lessonDate}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="abstractText">Конспект занятия</label>
+        <textarea id="abstractText" name="abstractText" rows="15" th:text="${lesson.abstractText}" readonly></textarea>
+    </div>
+    <input type="hidden" name="lessonId" th:value="${lesson.getId()}">
+</div>
+
+<div th:replace="fragments/footer :: footer">
+</div>
+</body>
+</html>

@@ -14,6 +14,8 @@
     <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
+    <mapstruct.version>1.5.5.Final</mapstruct.version>
+    <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
   </properties>
 
   <dependencyManagement>
@@ -130,6 +132,7 @@
       <version>2.3.0</version>
     </dependency>
 
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -142,6 +145,19 @@
       <artifactId>jbcrypt</artifactId>
       <version>0.4</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.10</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>course_log</finalName>
@@ -154,7 +170,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
       </plugin>
     </plugins>
   </build>

@@ -20,4 +20,6 @@ public interface CourseDao {
     Course findCourseByGroupCode(String groupCode) throws DaoException;
 
     List<Course> getAllCourses() throws DaoException;
+
+//    List<Course> getUserCourses(User user);
 }

@@ -59,7 +59,7 @@ public class User implements UserDetails {
     )
     private List<Course> courses = new ArrayList<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "attendance",
             joinColumns = { @JoinColumn(name = "users_id") },
